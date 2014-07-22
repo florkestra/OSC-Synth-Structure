@@ -1,0 +1,36 @@
+{
+  "name": "flocking",
+  "main": "dist/flocking-all.min.js",
+  "ignore": [
+    "demos",
+    "docs",
+    "flocking",
+    "images",
+    "node_modules",
+    "nodejs",
+    "tests",
+    "third-party",
+    "ui",
+    ".jshintrc",
+    ".gitignore",
+    "favicon.ico",
+    "GPL-LICENSE.txt",
+    "index.html",
+    "Gruntfile.js",
+    "MIT-LICENSE.txt",
+    "package.json"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "homepage": "https://github.com/colinbdclark/flocking",
+  "_release": "aaab5e99ad",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "aaab5e99ad632d36df706600a2d769cb1a05857c"
+  },
+  "_source": "git://github.com/colinbdclark/flocking.git",
+  "_target": "*",
+  "_originalSource": "git://github.com/colinbdclark/flocking.git",
+  "_direct": true
+}

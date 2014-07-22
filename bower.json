@@ -1,0 +1,7 @@
+{
+  "name":"SimpleOSCReceiver",
+  "version": "0.0.1",
+  "dependencies": {
+    "osc.js": ">=1.0.2"
+  }
+}
