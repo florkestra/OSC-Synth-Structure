@@ -1,4 +1,3 @@
-// Use Chrome's system.network API to display local IP to the user
 chrome.system.network.getNetworkInterfaces( function(interfaces){
   
   for ( var i = 0 ; i < interfaces.length; i++){
@@ -19,9 +18,6 @@ udpPort.on("open", function () {
     document.getElementById("message").innerText = "Listening for UDP on port " + udpPort.options.localPort;
 });
 
-udpPort.on("message", function(message){
-  document.getElementById("message").innerText = message.address + "   " + message.args;
-});
 
 udpPort.on("error", function (err) {
     throw new Error(err);
@@ -29,12 +25,26 @@ udpPort.on("error", function (err) {
 
 udpPort.open();
 
-udpPort.on("message", function (oscMsg) {
-    console.log(oscMsg);
-    var oscMsgSplit = oscMsg.split(" ");
-    var split = oscMsgSplit[1];
-    var value = parseInt(split);
-    this.synth.set("Main.source.freq.freq", value*400);
+
+
+udpPort.on("message", function(message){
+  console.log(oscMsg);
+  document.getElementById("message").innerText = message.address + "   " + message.args;
+    switch (message.address){
+    case "/1/faderA":
+        synth.set("Main.source.freq.freq", message.args[0]*600);
+        break;
+    case "/1/faderB":
+        synth.set("Main.source.freq.mul", message.args[0]*400);
+        break;
+    case "/1/rotaryA":
+        synth.set("Main.numGrains.end", message.args[0]*100);
+        break;
+    case "/1/rotaryB":
+        synth.set("Main.delayDur", message.args[0]*8+1);
+        break;
+  }    
+    
 });
     
 var synth = flock.synth({
